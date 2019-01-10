@@ -1,0 +1,38 @@
+\chapter{Some Mathematical Preliminaries}
+\section{Calculus of Variations}
+\label{sec:calc_var}
+
+The calculus of variations is the main tool used in understanding variational forms of mechanics. The basic idea of the calculus of variations is to take the familiar concept of minimizing functions $f(x)$ defined on the real number line $\reals$ and extend it. In your first calculus course, you learned that if $x_0$ was a minimum of $f(x)$, then $\eval{\qty(\dv{f}{x})}_{x_0} = 0$. \marginnote{$\eval{\qty(\dv{f}{x})}_{x_0}$ means ``take the derivative of $f(x)$ with respect to $x$, then set $x = x_0$''. The line means to \emph{evaluate} what comes before it. But do it after taking the derivative, not before!!}
+The calculus of variations extends this idea to \textbf{functionals}. A functional takes as \emph{input} a function $f(x)$ and \emph{outputs} a real number, much in the same way an ordinary function takes a real (or complex) number and outputs another real (or complex) number.
+
+The basic idea is just to take a functional and see that something corresponding to its ``derivative'' is zero for the function $f_0(x)$ that minimizes or maximizes the functional. We have to be careful about what that exactly means; it's not the same thing as the derivative of a function. However, it turns out that once we figure out what we're doing, the calculus of variations will use only the standard techniques of calculus you already know. Doing this will give you extremely useful insights into the function $f_0(x)$ that minimizes the functional. 
+
+\marginnote{Functionals are typically written like this $J[y]$, where $y(x)$ is a function. Note the square brackets rather than parantheses. Don't mix them up!}
+
+\subsection{A simple example}
+Imagine you a have a function $y(x)$ that defines a curve in the $x-y$ plane. A functional you might care about is the \emph{length} of the curve. We are going to demonstrate that 
+\subsection{References}
+\begin{itemize}
+\item Princeton Companion, III.94 ``Variational Methods'', Lawrence C. Evans
+\end{itemize}
+
+% \subsection{Sets and Spaces}
+% \label{sec:sets_spaces}
+
+% If you want to read some more mathematical references, it's very handy to know the very basics of set-builder notation. See the appendix. 
+
+
+% \appendix
+
+% \section{Set-Builder notation}
+% \label{sec:set-builder}
+
+% A \emph{set} is written between curly braces: \{3, 4, 7, 2\} is the set of digits that make up the first six digits of my telephone number. More often, we're intersted in sets that can't be written out explicitly. Some sets are so well known, we don't even need to do more than use their names. For example,
+% \begin{itemize}
+% \item \mathbb{R}: the set of all real numbers
+% \item \mathbb{Z}: the set of integers (for the interested, \emph{zahlen} is German for ``integer'')
+% \item \mathbb{C}: the set of all complex numbers
+% \end{itemize}
+% are three sets you'll run into in physics.
+
+% For most other sets of interest, we use ``set builder'' notation, which gives a set of things with conditions for membership. There are always three parts: a \emph{variable}, either | or :, and then a condition (properly called a \emph{predicate}). So
