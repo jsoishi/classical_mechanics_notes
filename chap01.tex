@@ -90,7 +90,7 @@ To do so, let's introduce the \textbf{first order functional variation}
     & = \int_a^b \qty[\dv{F(x, y_0 + \epsilon \delta y, y_0' + \epsilon \delta y')}{\epsilon}]_{\epsilon = 0} dx,    
   \end{split}
 \end{equation}
-where here we note that in the expression $\var{J[y]}$, $\delta$ is an \textbf{operator}, but in $\delta y(x)$, it's just the name of the function. Now, we make use of the chain rule\marginnote{The chain rule is something you should know cold. It's $\dv{f(g(x))}{x} = \dv{f}{g} \dv{g}{x}$} as applied to a multivarible function , $F(x, y(x), y'(x))$:
+where here we note that in the expression $\var{J[y]}$, $\delta$ is an \textbf{operator}, but in $\delta y(x)$, it's just the name of the function. Now, we make use of the chain rule\marginnote{The chain rule is something you should know cold. It's given by $\dv{f(g(x))}{x} = \dv{f}{g} \dv{g}{x}$} as applied to a multivarible function, $F(x, y(x), y'(x))$:
 
 \begin{equation}
   \label{eq:chain_rule}
@@ -99,9 +99,18 @@ where here we note that in the expression $\var{J[y]}$, $\delta$ is an \textbf{o
 The first term is zero because $x$ is independent of $\epsilon$. Substituting $y_0 + \epsilon \delta y$ for $y$ and similarly for $\delta y$, we end up with
 \begin{equation}
   \label{eq:first_order_functional_step2}
-    \var{J[y]} = \int_a^b \qty[\pdv{F}{y} \delta y + \pdv{F}{y'} \delta y']_{\epsilon = 0} dx.
+    \var{J[y]} = \int_a^b \qty(\pdv{F}{y} \delta y + \pdv{F}{y'} \delta y') dx.
 \end{equation}
-We want to integrate the second term by parts because it's in the canonical form, and because 
+We want to integrate the second term by parts because it's in the canonical form, and because we know that the boundary term will be zero.\marginnote{Integration by parts is also something you should totally know. It's given by $\int_a^b f(x) g'(x) dx = \eval{f(x)g(x)}_{x = a}^{x=b} - \int_a^b f'(x) g(x) dx.$ The first term is called the ``boundary term.''} This gives 
+\begin{equation}
+  \label{eq:first_order_functional_step2}
+    \var{J[y]} = \int_a^b \delta y \qty(\pdv{F}{y} - \dv{x} \pdv{F}{y'}) dx.
+\end{equation}
+When the functional is stationary, $\var{J[y]} = 0$. Here, we pull one of the physicist's favorite tricks: we say that $\var{J[y]}$ should be stationary for \emph{any} $\delta y$. Thus, the other term in the integral in equation~(\ref{eq:first_order_functional_step2}) \emph{must} be zero. This gives us the \textbf{Lagrange equations}\footnote{these are also called Euler's equations in the general calculus of variations. If you see reference to the Euler-Largrange equations, that's the same thing.},
+\begin{equation}
+  \label{eq:1}
+  \dv{x} \pdv{F}{y'} = \pdv{F}{y}
+\end{equation}
 
 \subsection{References}
 \begin{itemize}
