@@ -1,4 +1,48 @@
 \chapter{Some Mathematical Preliminaries}
+
+\section{Mathematical Review}
+\label{sec:review}
+
+Before we begin, we should review a few pieces of elementary calculus that you should know very well.
+
+\subsection{The Chain Rule}
+\label{sec:chain_rule}
+For a function of a function, the derivative is given by
+
+\begin{equation}
+  \label{eq:chain_rule_def}
+  \dv{f(g(x))}{x} = \dv{f}{g} \dv{g}{x}.
+\end{equation}
+We can generalize this to a function of more than one variable,
+\begin{equation}
+  \label{eq:multivar_chain_rule_def}
+  \dv{f(g(x), h(x))}{x} = \pdv{f}{g} \dv{g}{x} + \pdv{f}{h} \dv{h}{x}.
+\end{equation}
+
+\subsection{Integration By Parts}
+\label{sec:IBP}
+This somewhat strange rule changes one integral into another plus a constant term called the ``boundary term.''  On the face of it, it seems useless, because it turns one integral into Another. However, it is remarkable useful because quite often the new integral is a lot easier to solve or implies something deep about your problem\footnote{or both! Solutions can be quite deep, though many are not.}
+
+Integration by parts is given by
+\begin{equation}
+  \label{eq:IBP_def}
+  \int_{x_1}^{x_2} f(x) \dv{g(x)}{x} dx = \eval{f(x) g(x)}_{x_1}^{x_2} - \int_{x_1}^{x_2} g(x) \dv{f(x)}{x} dx.
+\end{equation}
+The first term is sometimes called the ``boundary'' term, because it is completely determined by the values on the boundary of the interval.
+
+\subsection{Total Derivatives}
+\label{sec:total_deriv}
+The total derivative of a multivariate function is defined by
+\begin{equation}
+  \label{eq:total_deriv_lagrange}
+  \dv{f(x, y, z)}{x} = \pdv{f}{x} + \dv{y}{x} \pdv{f}{y} + \dv{z}{x} \pdv{f}{z},
+\end{equation}
+for the case where $y = y(x)$ and $z = z(x)$. Most often in Lagrangian mechanics we want a total time derivative on a function $f$ that depends on $q$ and its time derivative $\dot{q}$:
+\begin{equation}
+  \label{eq:total_deriv_lagrange}
+  \dv{f(q, \dot{q}, t)}{t} = \pdv{f}{t} + \dot{q} \pdv{f}{q} + \ddot{q} \pdv{f}{\dot{q}}.
+\end{equation}
+In this case, we say that $q = q(t)$ (and similarly for $\dot{q}$) is an \emph{implicit} function of time, because we know that it depends on time but we don't know that time dependence. Indeed, that is what we are usually solving the equations for.
 \section{Calculus of Variations}
 \label{sec:calc_var}
 
@@ -7,7 +51,7 @@ The calculus of variations extends this idea to \textbf{functionals}. A function
 
 The basic idea is just to take a functional and see that something corresponding to its ``derivative'' is zero for the function $f_0(x)$ that minimizes or maximizes the functional. We have to be careful about what that exactly means; it's not the same thing as the derivative of a function. However, it turns out that once we figure out what we're doing, the calculus of variations will use only the standard techniques of calculus you already know. Doing this will give you extremely useful insights into the function $f_0(x)$ that minimizes the functional. 
 
-\marginnote{Functionals are typically written like this $J[y]$, where $y(x)$ is a function. Note the square brackets rather than parantheses. Don't mix them up!}
+\marginnote{Functionals are typically written like this $J[y]$, where $y(x)$ is a function. Note the square brackets rather than parentheses. Don't mix them up!}
 
 \subsection{A simple example}
 Imagine you a have a function $y(x)$ that defines a curve in the $x-y$ plane. A functional you might care about is the \emph{length} of the curve. We are going to demonstrate that the shortest path between two points in a Cartesian plane is a straight line. While this is likely not news to you, it is a simple example that demonstrates what the calculus of variations does.
@@ -73,7 +117,7 @@ This tells us that $\epsilon = 0$ is an \emph{extrema}. To find out if it's a mi
 Thus, we see that $y_0 = mx$ is indeed the shortest path. But there's a weakness to this: we had to know what $y_0(x)$ was. It turns out that the calculus of variations is so useful because we can use it to find extremal paths without knowing what they are.
 
 \subsection{Functional Variations}
-We want to find the minima of a functional, and we can show that we can do that using only standard calculus techniques. In essense, we are going to turn the problem of minimizing a functional into an ordinary differential equation in $x$.
+We want to find the minima of a functional, and we can show that we can do that using only standard calculus techniques. In essence, we are going to turn the problem of minimizing a functional into an ordinary differential equation in $x$.
 
 Let's start by defining the functional $J[y]$,
 \begin{equation}
@@ -90,7 +134,7 @@ To do so, let's introduce the \textbf{first order functional variation}
     & = \int_a^b \qty[\dv{F(x, y_0 + \epsilon \delta y, y_0' + \epsilon \delta y')}{\epsilon}]_{\epsilon = 0} dx,    
   \end{split}
 \end{equation}
-where here we note that in the expression $\var{J[y]}$, $\delta$ is an \textbf{operator}, but in $\delta y(x)$, it's just the name of the function. Now, we make use of the chain rule\marginnote{The chain rule is something you should know cold. It's given by $\dv{f(g(x))}{x} = \dv{f}{g} \dv{g}{x}$} as applied to a multivarible function, $F(x, y(x), y'(x))$:
+where here we note that in the expression $\var{J[y]}$, $\delta$ is an \textbf{operator}, but in $\delta y(x)$, it's just the name of the function. Now, we make use of the chain rule as applied to a multivarible function, $F(x, y(x), y'(x))$:
 
 \begin{equation}
   \label{eq:chain_rule}
@@ -101,21 +145,23 @@ The first term is zero because $x$ is independent of $\epsilon$. Substituting $y
   \label{eq:first_order_functional_step2}
     \var{J[y]} = \int_a^b \qty(\pdv{F}{y} \delta y + \pdv{F}{y'} \delta y') dx.
 \end{equation}
-We want to integrate the second term by parts because it's in the canonical form, and because we know that the boundary term will be zero.\marginnote{Integration by parts is also something you should totally know. It's given by $\int_a^b f(x) g'(x) dx = \eval{f(x)g(x)}_{x = a}^{x=b} - \int_a^b f'(x) g(x) dx.$ The first term is called the ``boundary term.''} This gives 
+We want to integrate the second term by parts because it's in the canonical form, and because we know that the boundary term will be zero. This gives 
 \begin{equation}
   \label{eq:first_order_functional_step2}
     \var{J[y]} = \int_a^b \delta y \qty(\pdv{F}{y} - \dv{x} \pdv{F}{y'}) dx.
 \end{equation}
-When the functional is stationary, $\var{J[y]} = 0$. Here, we pull one of the physicist's favorite tricks: we say that $\var{J[y]}$ should be stationary for \emph{any} $\delta y$. Thus, the other term in the integral in equation~(\ref{eq:first_order_functional_step2}) \emph{must} be zero. This gives us the \textbf{Lagrange equations}\footnote{these are also called Euler's equations in the general calculus of variations. If you see reference to the Euler-Largrange equations, that's the same thing.},
+When the functional is stationary, $\var{J[y]} = 0$. Here, we pull one of the physicist's favorite tricks: we say that $\var{J[y]}$ should be stationary for \emph{any} $\delta y$. Thus, the other term in the integral in equation~(\ref{eq:first_order_functional_step2}) \emph{must} be zero. This gives us the \textbf{Lagrange equations}\footnote{these are also called Euler's equations in the general calculus of variations. If you see reference to the Euler-Lagrange equations, that's the same thing.},
 \begin{equation}
   \label{eq:1}
-  \dv{x} \pdv{F}{y'} = \pdv{F}{y}
+  \dv{x} \pdv{F}{y'} = \pdv{F}{y}.
 \end{equation}
+It's worth spending a few minutes understanding what these equations really mean. The use of partial derivatives can be a bit confusing. Because the integration by parts in equation~(\ref{eq:first_order_functional_step2}) moves the differential with respect to $x$ from $\delta y(x)$, the derivative is a \emph{total} derivative. This means, implicitly, that $\pdv*{F}{y'}$ must be only a function of $x$. This can get confusing! I find it helpful when I get confused (and I do!) to go back and say that $F(x, y, z)$, with $y = y(x)$ and $z = y'(x)$. So really, when I take $\pdv*{F}{y'}$, what I really mean is $\eval{\pdv*{F}{z}}_{z = y'(x)},$ which is only a function of $x$.
 
 \subsection{References}
 \begin{itemize}
 \item Princeton Companion, III.94 ``Variational Methods'', Lawrence C. Evans
-\item Brizard, ``An Introduction to Lagrangian Mechanics''
+\item Brizard, \emph{An Introduction to Lagrangian Mechanics}
+\item Gelfand and Fomin, \emph{Calculus of Variations}
 \end{itemize}
 
 % \subsection{Sets and Spaces}
@@ -142,3 +188,5 @@ When the functional is stationary, $\var{J[y]} = 0$. Here, we pull one of the ph
 %%% mode: latex
 %%% TeX-master: "main"
 %%% End:
+
+%  LocalWords:  variational extrema extremal multivarible Brizard
