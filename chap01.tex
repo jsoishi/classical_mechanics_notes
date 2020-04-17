@@ -5,6 +5,73 @@
 
 Before we begin, we should review a few pieces of elementary calculus that you should know very well.
 
+\subsection{Derivatives and Differentials}
+\label{sec:der_diff}
+
+It is extremely important to distinguish the derivative of a function
+
+\begin{equation}
+  \label{eq:derivative}
+  f'(x) \equiv \frac{df}{dx}
+\end{equation}
+
+from a \emph{differential} $df$.
+$df$ is the infinitesimal limit of $\Delta f = f(x_2) - f(x_1)$.
+In this sense, it is merely a regular quantity, just a very small one.
+This comes into play quite often in changing variables of integration, as we will do shortly.
+For example imagine you have an integral
+\begin{equation}
+  \label{eq:test_integral}
+  \int_a^b df,
+\end{equation}
+and you also know
+\begin{equation}
+  \label{eq:func_test}
+  f(x) = (1 + x^2)^{2/7}.
+\end{equation}
+You want to evaluate equation~(\ref{eq:derivative}) in terms of the function you know.
+In order to turn $df$ into $dx$, one often resorts to using rules of fractions that \emph{do not apply to derivatives}.
+Virtually all students \emph{know} this is wrong, but it seems to work.
+This is why it is wrong, and why it works.
+If you want to evaluate $df$, it is simply a small amount of change in $f$.
+You can work this out at any given point $x_0$ by simply noting that the amount $f$ changes in a small amount $dx$ is simply given by the linear equation
+\begin{equation}
+  \label{eq:differential}
+  df = m dx,
+\end{equation}
+where 
+\begin{equation}
+  \label{eq:m}
+  m = \eval{\frac{df}{dx}}_{x_0}.
+\end{equation}
+There's nothing more to this than saying that the derivative is the slope of the tangent line, and if we go some small amount $dx$, we end up with an amount $df$.
+You can see this clearly in figure~\ref{fig: tangent}!
+We can now rid ourselves of $x_0$, because this is true at all points $x$.
+Thus, it becomes clear that 
+\begin{equation}
+  \label{eq:m}
+  df = \eval{\frac{df}{dx}}_{x_0} dx,
+\end{equation}
+which \emph{looks} for all the world like we can treat $df/dx$ like a fraction and cross multiply.
+That isn't what we're doing because $df/dx$ is really a function.
+But it seems to work in this case anyway.
+
+\begin{marginfigure}
+\label{fig: tangent}
+  \begin{tikzpicture}
+    \draw[very thick, opacity=0.4] (0,0) sin (4,4);
+    \node[opacity=0.4] [right] at (4,4) {f(x)};
+    \draw[thick] (0,0) -- (1, 4*0.392699081699);
+    \draw[thick, dashed] (0,0) -- (1,0);
+    \draw[thick, dashed] (1,0) -- (1,4*0.392699081699);
+    \node [right] at (1,2*0.392699081699) {df};
+    \node [below] at (0.5, 0.392699081699) {dx};
+  \end{tikzpicture}
+  \caption{$df$ is nothing more than the tangent line times the small amount of independent variable $dx$.}
+\end{marginfigure}
+We say that a derivative is an \emph{operator} acting on a function and returning a new function.\footnote{Formally, $g(x) = df(x)/dx$.
+An operator $\mathcal{L}$ acts on a function to its right, for example $\mathcal{L} f = df(x)/dx$}
+
 \subsection{The Chain Rule}
 \label{sec:chain_rule}
 For a function of a function, the derivative is given by
